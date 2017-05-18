@@ -91,5 +91,5 @@ module.exports = {
         ]
 
     },
-    postcss: () => [require('autoprefixer')]
+    postcss: () => [require('autoprefixer'), require('postcss-assets')({ loadPaths: ['assets/image'] })]
 };

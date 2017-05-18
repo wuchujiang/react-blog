@@ -177,3 +177,15 @@ $lightColor: #0081FF;
         margin-left: 15px;
     }
 }
+
+.fa {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.fa-bold {
+    background-image: resolve('editor/bold.svg');
+}
