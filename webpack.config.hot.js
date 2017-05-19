@@ -37,11 +37,11 @@ module.exports = {
             exclude: /^node_modules$/,
             loader: ExtractTextPlugin.extract('style', ['css', 'postcss', 'sass']),
         }, {
-            test: /\.(eot|woff|svg|ttf|woff2|gif|appcache)(\?|$)/,
+            test: /\.(eot|woff|ttf|woff2|appcache)(\?|$)/,
             exclude: /^node_modules$/,
             loader: 'file-loader?name=[name].[ext]',
         }, {
-            test: /\.(png|jpg|gif)$/,
+            test: /\.(png|jpg|gif|svg)$/,
             exclude: /^node_modules$/,
             loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]',
             //注意后面那个limit的参数，当你图片大小小于这个限制的时候，会自动启用base64编码图片

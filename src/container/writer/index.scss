@@ -1,1 +1,72 @@
 @import './markdown.scss';
+.writer-form {
+    padding: 20px 10px;
+    input {
+        width: 100%;
+        border: none;
+        height: 40px;
+        line-height: 40px;
+        background: #fff;
+        border: 1px solid #ddd;
+        font-size: 16px;
+        margin-bottom: 20px;
+        padding-left: 10px;
+        box-sizing: border-box;
+    }
+}
+
+.editor-contain {
+    padding: 10px;
+}
+
+.writer-classify {
+    padding-left: 10px;
+    height: 40px;
+    background: #fff;
+    border: 1px solid #ddd;
+    p {
+        padding-right: 16px;
+    }
+    display: flex;
+    align-items: center;
+    ul {
+        li {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 3px 6px;
+            cursor: pointer;
+            border: 1px solid #fff;
+            border-radius: 4px;
+        }
+        li.active {
+            border-color: #ddd;
+            background: #ddd;
+        }
+        li:hover {
+            background: #ddd;
+        }
+    }
+}
+
+.submit {
+    padding-left: 10px;
+    margin-bottom: 20px;
+    button {
+        background: orange;
+        border: none;
+        color: #FFF;
+        display: inline-block;
+        width: 100px;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+    }
+    button:active {
+        background: orangered;
+    }
+    .error {
+        margin-left: 20px;
+        color: orangered;
+    }
+}

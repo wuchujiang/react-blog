@@ -3,10 +3,17 @@ import { Router, Route, IndexRoute, browserHistory, hashHistory } from 'react-ro
 import Home from 'src/container/home';
 import Index from 'src/container/';
 
+
 const writer = (location, cb) => {
     require.ensure([], require => {
         cb(null, require('../container/writer').default);
     }, 'writer');
+};
+
+const login = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../container/login').default);
+    }, 'login');
 };
 
 const history = process.env.NODE_ENV !== 'production' ? hashHistory : hashHistory;
@@ -23,6 +30,7 @@ const RouteConfig = (
         <Route path="/" component={Index}>
             <IndexRoute component={Home} />
             <Route path="writer" getComponent={writer} />
+            <Route path="login" getComponent={login} />
         </Route>
     </Router>
 );
