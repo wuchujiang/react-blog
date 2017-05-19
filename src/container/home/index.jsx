@@ -7,6 +7,11 @@ import Article from './Article';
 import './index.scss';
 
 class Home extends Component {
+    componentDidMount() {
+        this.props.actions.fetchPosts('http://localhost:3000/article').then(data => {
+            console.log(data);
+        });
+    }
     render() {
         return (
             <div>

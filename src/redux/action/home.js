@@ -1,27 +1,17 @@
-// import fetch from 'isomorphic-fetch';
-
+import fetch from 'isomorphic-fetch';
 import { ADD_TODOS, SUBTRACT_TODOS } from '../types';
 
 export const addAodos = () => ({ type: ADD_TODOS });
 
 export const subtractTodos = () => ({ type: SUBTRACT_TODOS });
 
-/*
-export const fetchPosts = (path, postData) => {
-    let url = target + path + Tool.paramType(postData);
+export const fetchPosts = path => {
     return dispatch => {
-        dispatch(requestPosts(postData));
-        return fetch(url, {
+        return fetch(path, {
             mode: 'cors',
         }).then(response => {
-            if (response.ok) {
-                response
-                    .json()
-                    .then(json => dispatch(receivePosts(path, json)))
-            } else {
-                console.log("status", response.status);
-            }
-        }).catch(error => console.log(error))
-    }
-}
-*/
+            if (!response.ok) throw new Error('Bad response from server');
+            return response.json();
+        }).catch(error => console.log(error));
+    };
+};
