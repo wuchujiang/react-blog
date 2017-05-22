@@ -8,7 +8,9 @@ class Register extends Component {
     submitHandle = () => {
         const { form: { user, password, repeatPassword } } = this.props;
         const data = {
-            user, password, repeatPassword
+            user: user.value,
+            password: password.value,
+            repeatPassword: repeatPassword.value
         };
         fetchPosts('http://localhost:3000/users/register', 'post', data).then(datas => {
             console.log(datas);
