@@ -1,25 +1,58 @@
 import React, { Component } from 'react';
+import formProvider from 'src/util/formProvider';
+import Form from 'src/component/form';
 import './index.scss';
 
 class Login extends Component {
+    handleSubmit = () => {
+    };
+
     render() {
+        const { form: { user, password }, onFormChange, onFormFocus } = this.props;
         return (
-            <div className="login">
-                <h4>登录</h4>
-                <div className="login-container">
-                    <div className="user-name">
-                        <span className="user-icon" />
-                        <input placeholder="请输入用户名" className="login-user" type="text"/>
-                    </div>
-                    <div className="user-password">
-                        <span className="password-icon" />
-                        <input placeholder="请输入密码" className="login-user" type="password"/>
-                    </div>
-                </div>
-                <button>登录</button>
-            </div>
+            <Form
+              type="login"
+              user={user}
+              password={password}
+              onFormChange={onFormChange}
+              onFormFocus={onFormFocus}
+              button="登录"
+            />
         );
     }
 }
 
-export default Login;
+const vaild = {
+    user: {
+        defaultValue: '',
+        rules: [
+            {
+                pattern: (value) => {
+                    return value.length > 0;
+                },
+                error: '请输入用户名'
+            },
+            {
+                pattern: /^[A-Za-z1-9]{4,10}$/,
+                error: '请输入4到10个字符'
+            }
+        ]
+    },
+    password: {
+        defaultValue: '',
+        rules: [
+            {
+                pattern: (value) => {
+                    return value.length > 0;
+                },
+                error: '请输入密码'
+            },
+            {
+                pattern: /^[A-Za-z1-9]{4,10}$/,
+                error: '请输入4到10个字符'
+            }
+        ]
+    },
+};
+
+export default formProvider(vaild)(Login);

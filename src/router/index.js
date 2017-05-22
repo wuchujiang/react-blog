@@ -16,9 +16,13 @@ const login = (location, cb) => {
     }, 'login');
 };
 
+const register = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../container/register').default);
+    }, 'register');
+};
+
 const history = process.env.NODE_ENV !== 'production' ? hashHistory : hashHistory;
-
-
 /* const search = (location, cb) => {
     require.ensure([], require => {
         cb(null, require('../Component/search').default)
@@ -31,6 +35,7 @@ const RouteConfig = (
             <IndexRoute component={Home} />
             <Route path="writer" getComponent={writer} />
             <Route path="login" getComponent={login} />
+            <Route path="register" getComponent={register} />
         </Route>
     </Router>
 );
