@@ -8,9 +8,16 @@ import Article from './Article';
 import './index.scss';
 
 class Home extends Component {
+    state = {
+        article: []
+    }
     componentDidMount() {
         fetchPosts('http://localhost:3000/article', 'post').then(data => {
-            console.log(data);
+            if (data.code === 0 && data.data.length > 0) {
+                this.setState({
+                    article: data.data
+                });
+            }
         });
     }
     render() {
@@ -22,7 +29,7 @@ class Home extends Component {
                         <h2>前端开发学习</h2>
                         <p>前端开发学习</p>
                     </div>
-                    <Article />
+                    <Article article={this.state.article} />
                 </Wrap>
             </div>
         );

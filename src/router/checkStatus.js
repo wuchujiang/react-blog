@@ -3,7 +3,7 @@ const checkStatus = (nextState, replace, next) => {
     if (tokenInfo) {
         const curTime = tokenInfo.curTime;
         const time = new Date().getTime();
-        if ((time - curTime) > (1000 * 60 * 10)) {
+        if ((time - curTime) > (1000 * 60 * 60 * 12)) {
             replace('/login?reUrl=writer');// 如果token信息为空就直接到登录页面
             next();
         } else {

@@ -22,6 +22,12 @@ const register = (location, cb) => {
     }, 'register');
 };
 
+const article = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../container/article').default);
+    }, 'article');
+};
+
 const history = process.env.NODE_ENV !== 'production' ? hashHistory : hashHistory;
 /* const search = (location, cb) => {
     require.ensure([], require => {
@@ -36,6 +42,7 @@ const RouteConfig = (
             <Route path="writer" onEnter={checkStatus} getComponent={writer} />
             <Route path="login" getComponent={login} />
             <Route path="register" getComponent={register} />
+            <Route path="article/:id" getComponent={article} />
         </Route>
     </Router>
 );

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Header } from 'src/component';
@@ -12,6 +12,9 @@ import './index.scss';
     dispatch => bindActionCreators({}, dispatch)
 )
 class Write extends Component {
+    static contextTypes = {
+        router: PropTypes.object
+    };
     state = {
         classify: '',
         info: '',
@@ -40,7 +43,9 @@ class Write extends Component {
             content: this.state.content
         };
         fetchPosts('http://localhost:3000/article/writer', 'post', data).then(datas => {
-            console.log(datas);
+            if (datas.code === 0) {
+                this.context.router.push(`/article/${datas.articleId}`);
+            }
         });
     };
     render() {
