@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import formProvider from 'src/util/formProvider';
 import Form from 'src/component/form';
+import { Header } from 'src/component';
 import fetchPosts from 'src/util/fetch';
-// import './index.scss';
 
 class Register extends Component {
     submitHandle = () => {
@@ -21,16 +21,19 @@ class Register extends Component {
     render() {
         const { form: { user, password, repeatPassword }, onFormChange, onFormFocus } = this.props;
         return (
-            <Form
-              type="register"
-              user={user}
-              password={password}
-              onFormChange={onFormChange}
-              onFormFocus={onFormFocus}
-              repeatPassword={repeatPassword}
-              button="注册"
-              submitHandle={this.submitHandle}
-            />
+            <div>
+                <Header title="注册" />
+                <Form
+                  type="register"
+                  user={user}
+                  password={password}
+                  onFormChange={onFormChange}
+                  onFormFocus={onFormFocus}
+                  repeatPassword={repeatPassword}
+                  button="注册"
+                  submitHandle={this.submitHandle}
+                />
+            </div>
         );
     }
 }

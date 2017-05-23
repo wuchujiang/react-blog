@@ -1,23 +1,55 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import formProvider from 'src/util/formProvider';
 import Form from 'src/component/form';
-import './index.scss';
+import { Header } from 'src/component';
+import fetchPosts from 'src/util/fetch';
 
 class Login extends Component {
-    handleSubmit = () => {
+    static contextTypes = {
+        router: PropTypes.object
+    };
+    constructor(props, context) {
+        super(props);
+    }
+    submitHandle = () => {
+        const { form: { user, password } } = this.props;
+        const data = {
+            user: user.value,
+            password: password.value
+        };
+        fetchPosts('http://localhost:3000/users/login', 'post', data).then(result => {
+            console.log(result);
+            if (result.code === 0) {
+                const token = {
+                    token: result.token,
+                    curTime: new Date().getTime()
+                };
+                localStorage.setItem('token', JSON.stringify(token));
+                const reUrl = this.props.location.query.reUrl;
+                if (reUrl) {
+                    this.context.router.push(`/${reUrl}`);
+                } else {
+                    this.context.router.push('/');
+                }
+            }
+        });
     };
 
     render() {
         const { form: { user, password }, onFormChange, onFormFocus } = this.props;
         return (
-            <Form
-              type="login"
-              user={user}
-              password={password}
-              onFormChange={onFormChange}
-              onFormFocus={onFormFocus}
-              button="登录"
-            />
+            <div>
+                <Header title="登录" />
+                <Form
+                  type="login"
+                  user={user}
+                  password={password}
+                  onFormChange={onFormChange}
+                  onFormFocus={onFormFocus}
+                  button="登录"
+                  submitHandle={this.submitHandle}
+                />
+            </div>
         );
     }
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Router, Route, IndexRoute, browserHistory, hashHistory } from 'react-router';
 import Home from 'src/container/home';
 import Index from 'src/container/';
-
+import checkStatus from './checkStatus';
 
 const writer = (location, cb) => {
     require.ensure([], require => {
@@ -33,7 +33,7 @@ const RouteConfig = (
     <Router history={history}>
         <Route path="/" component={Index}>
             <IndexRoute component={Home} />
-            <Route path="writer" getComponent={writer} />
+            <Route path="writer" onEnter={checkStatus} getComponent={writer} />
             <Route path="login" getComponent={login} />
             <Route path="register" getComponent={register} />
         </Route>

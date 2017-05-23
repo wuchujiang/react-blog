@@ -9,11 +9,13 @@ const fetchPosts = (path, method, body) => {
     } else {
         body = body && JSON.stringify(body);
     }
+    const tokenInfo = localStorage.getItem('token');
     return fetch(path, {
         method,
         headers: {
             Accept: 'application/json',
-            'Content-Type': 'application/json' // 记得加上这行，不然bodyParser.json() 会识别不了
+            'Content-Type': 'application/json', // 记得加上这行，不然bodyParser.json() 会识别不了,
+            'x-access-token': tokenInfo ? JSON.parse(tokenInfo).token : ''
         },
         mode: 'cors',
         body

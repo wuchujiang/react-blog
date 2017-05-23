@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Header } from 'src/component';
 import MdEditor from 'src/component/editor';
 import className from 'classnames';
+import fetchPosts from 'src/util/fetch';
 import './index.scss';
 
 @connect(
@@ -13,15 +14,33 @@ import './index.scss';
 class Write extends Component {
     state = {
         classify: '',
-        info: ''
+        info: '',
+        title: '',
+        content: ''
     };
     setClassify = () => ([
         'javascript', 'nodejs', 'react', 'vue', 'angular', 'webpack'
     ]);
 
-    clickHandle = item => {
+    getEditorContent = (value) => {
         this.setState({
-            classify: item
+            content: value
+        });
+    }
+
+    clickHandle = (type, value) => {
+        this.setState({
+            [type]: value
+        });
+    };
+    submitHandle = () => {
+        const data = {
+            title: this.state.title,
+            keyword: this.state.classify,
+            content: this.state.content
+        };
+        fetchPosts('http://localhost:3000/article/writer', 'post', data).then(datas => {
+            console.log(datas);
         });
     };
     render() {
@@ -30,7 +49,7 @@ class Write extends Component {
                 <Header title="记笔记" />
                 <div className="container">
                     <div className="writer-form">
-                        <input className="w-form-title" width="100%" placeholder="请输入文章标题" />
+                        <input value={this.state.title} onChange={e => { this.clickHandle('title', e.target.value); }} className="w-form-title" width="100%" placeholder="请输入文章标题" />
                         <div className="writer-classify">
                             <p>选择类别</p>
                             <ul className="writer-c-keyword">
@@ -39,7 +58,7 @@ class Write extends Component {
                                     return (
                                         <li
                                           className={className({ active: this.state.classify === item })}
-                                          onClick={e => this.clickHandle(item)}
+                                          onClick={e => this.clickHandle('classify', item)}
                                           key={index}
                                         >
                                             {item}
@@ -51,10 +70,10 @@ class Write extends Component {
                         </div>
                     </div>
                     <div className="editor-contain">
-                        <MdEditor />
+                        <MdEditor changeContent={this.getEditorContent} content={this.state.content} />
                     </div>
                     <div className="submit">
-                        <button>提交</button>
+                        <button onClick={this.submitHandle}>提交</button>
                         <span className="error">{this.state.info}</span>
                     </div>
                 </div>
