@@ -9,7 +9,7 @@ export default class MdEditor extends Component {
         panelClass: 'md-panel',
         mode: 'split',
         isFullScreen: false,
-        result: marked(this.props.content || '')
+        result: marked('')
     };
 
     componentWillUnmount() {
@@ -77,7 +77,7 @@ export default class MdEditor extends Component {
 
         this._ltr = setTimeout(() => {
             this.setState({ result: marked(this.textControl.value) }); // change state
-            this.props.changeContent(marked(this.textControl.value));
+            this.props.changeContent(this.textControl.value);
         }, 300);
     };
     _changeMode = (mode) => {
@@ -103,7 +103,7 @@ export default class MdEditor extends Component {
         // pre-select
         this.textControl.setSelectionRange(start + preStart, start + preEnd);
         this.setState({ result: marked(this.textControl.value) }); // change state
-        this.props.changeContent(marked(this.textControl.value));
+        this.props.changeContent(this.textControl.value);
     };
     _boldText = () => {
         this._preInputText('**加粗文字**', 2, 6);
@@ -149,7 +149,7 @@ export default class MdEditor extends Component {
                 <div
                   className={previewClass}
                   ref={ref => (this.previewControl = ref)}
-                  dangerouslySetInnerHTML={{ __html: this.props.content }}
+                  dangerouslySetInnerHTML={{ __html: this.state.result }}
                 />
                 <div className="md-spliter" />
             </div>

@@ -44,7 +44,7 @@
         "react/jsx-tag-spacing": 0,
         "guard-for-in": 0,
         "no-console": 0,
-        "dangerouslySetInnerHTML": 0,
-        "react/no-did-mount-set-state": 0
+        "react/no-did-mount-set-state": 0,
+        "react/no-danger": 0
     }
 }

@@ -1,7 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import marked from 'marked';
 import { bindActionCreators } from 'redux';
 import * as HomeActions from 'src/redux/action/home';
+
+const rendererMD = new marked.Renderer();
+marked.setOptions({
+    renderer: rendererMD,
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    sanitize: false,
+    smartLists: true,
+    smartypants: false
+});
+
+marked.setOptions({
+    highlight: (code) => {
+        return window.hljs.highlightAuto(code).value;
+    }
+});
 
 class Index extends Component {
     state = {
