@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import formProvider from 'src/util/formProvider';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as HomeActions from 'src/redux/action/home';
 import Form from 'src/component/form';
 import { Header } from 'src/component';
 import fetchPosts from 'src/util/fetch';
@@ -22,8 +25,10 @@ class Login extends Component {
             if (result.code === 0) {
                 const token = {
                     token: result.token,
-                    curTime: new Date().getTime()
+                    curTime: new Date().getTime(),
+                    userName: result.userName
                 };
+                this.props.actions.userInfo(result.userName);
                 localStorage.setItem('token', JSON.stringify(token));
                 const reUrl = this.props.location.query.reUrl;
                 if (reUrl) {
@@ -39,7 +44,7 @@ class Login extends Component {
         const { form: { user, password }, onFormChange, onFormFocus } = this.props;
         return (
             <div>
-                <Header title="登录" />
+                <Header {...this.props} title="登录" />
                 <Form
                   type="login"
                   user={user}
@@ -87,4 +92,7 @@ const vaild = {
     },
 };
 
-export default formProvider(vaild)(Login);
+export default connect(
+    state => ({ ...state }),
+    dispatch => ({ actions: bindActionCreators(HomeActions, dispatch) })
+)(formProvider(vaild)(Login));

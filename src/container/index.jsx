@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as HomeActions from 'src/redux/action/home';
 
 class Index extends Component {
+    state = {
+        userInfo: ''
+    }
     componentDidMount() {
         this.process();
+        const token = localStorage.getItem('token');
+        if (token) {
+            this.props.actions.userInfo(JSON.parse(token).userName);
+        }
     }
 
     process = () => {
@@ -43,4 +53,7 @@ class Index extends Component {
     }
 }
 
-export default Index;
+export default connect(
+    state => ({ ...state }),
+    dispatch => ({ actions: bindActionCreators(HomeActions, dispatch) })
+)(Index);

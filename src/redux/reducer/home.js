@@ -1,14 +1,11 @@
-import { ADD_TODOS, SUBTRACT_TODOS } from '../types';
+import { USER_INFO } from '../types';
 
-const initstate = 1;
-
-export const home = (state = initstate, action = {}) => {
+export const userInfo = (state = '', action = {}) => {
     switch (action.type) {
-    case ADD_TODOS:
-        return ++state;
-    case SUBTRACT_TODOS:
-        return --state;
+    case USER_INFO:
+        return action.value;
     default:
         return state;
     }
 };
+

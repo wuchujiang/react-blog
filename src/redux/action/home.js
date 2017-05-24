@@ -1,9 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import { ADD_TODOS, SUBTRACT_TODOS } from '../types';
-
-export const addAodos = () => ({ type: ADD_TODOS });
-
-export const subtractTodos = () => ({ type: SUBTRACT_TODOS });
+import { USER_INFO } from '../types';
 
 export const fetchPosts = path => {
     return dispatch => {
@@ -15,3 +11,5 @@ export const fetchPosts = path => {
         }).catch(error => console.log(error));
     };
 };
+
+export const userInfo = (name) => ({ type: USER_INFO, value: name });

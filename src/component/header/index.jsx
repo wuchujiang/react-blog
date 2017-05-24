@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import './index.scss';
 
 class Header extends Component {
+    static contextTypes = {
+        router: PropTypes.object
+    }
     state = { nav: false, width: 0 };
     showMenu = () => {
         this.setState(preState => {
@@ -11,6 +14,12 @@ class Header extends Component {
             };
         });
     };
+
+    lagoutHandle = () => {
+        localStorage.removeItem('token');
+        this.props.actions.userInfo('');
+        this.context.router.push('/');
+    }
 
     render() {
         return (
@@ -32,7 +41,7 @@ class Header extends Component {
                     <li><Link to="/"><span className="li-home" />主页</Link></li>
                     <li><Link to="writer"><span className="li-writer" />发表</Link></li>
                     <li><Link to="categorise"><span className="li-categorise" />归档</Link></li>
-                    <li><Link to="login"><span className="li-login" />登录</Link></li>
+                    <li>{this.props.userInfo === '' ? <Link to="login"><span className="li-login" />登录</Link> : <p onClick={e => this.lagoutHandle()}><span>退出</span></p>}</li>
                     <li><Link to="about"><span className="li-about" />关于</Link></li>
                 </ul>
             </header>

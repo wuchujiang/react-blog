@@ -5,3 +5,4 @@
 export const ADD_TODOS = 'ADD_TODOS';
 
 export const SUBTRACT_TODOS = 'SUBTRACT_TODOS';
+export const USER_INFO = 'USER_INFO';

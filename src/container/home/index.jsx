@@ -23,7 +23,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <Header />
+                <Header {...this.props} />
                 <Wrap>
                     <div className="title">
                         <h2>前端开发学习</h2>

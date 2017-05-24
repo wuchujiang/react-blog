@@ -1,0 +1,29 @@
+.wrap{
+    padding: 70px 0;
+}
+.article-content{
+    .article-title{
+        font-size: 30px;
+        font-weight: bold;
+        padding: 10px 0;
+        position: relative;
+        margin-bottom: 20px;
+        &:after{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 4px;
+            background-color: #ea6f5a;
+        }
+    }
+    .article-info{
+        a{
+            padding-right: 12px;
+        }
+    }
+    .words{
+        margin-bottom: 20px;
+    }
+}

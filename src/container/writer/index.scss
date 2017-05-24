@@ -51,6 +51,8 @@
 .submit {
     padding-left: 10px;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
     button {
         background: orange;
         border: none;
@@ -65,8 +67,10 @@
     button:active {
         background: orangered;
     }
-    .error {
-        margin-left: 20px;
-        color: orangered;
+    .recommend{
+        label{
+            padding-right: 5px;
+        }
+        padding-left: 20px;
     }
 }
