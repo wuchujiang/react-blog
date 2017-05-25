@@ -94,6 +94,7 @@ $lightColor: #0081FF;
         position: relative;
         width: 36px;
         height: 36px;
+        line-height: 36px;
         text-align: center;
         cursor: pointer;
         color: #aaa;
@@ -101,9 +102,15 @@ $lightColor: #0081FF;
         &.active {
             color: $lightColor;
             background-color: #eee;
+            svg{
+                color: #ea6f5a;
+            }
         }
         &:active {
             box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+        svg{
+            font-size: 18px;
         }
     }
     input[type="file"] {
@@ -174,66 +181,4 @@ $lightColor: #0081FF;
     .help-text {
         margin-left: 15px;
     }
-}
-
-.fa {
-    display: inline-block;
-    height: 22px;
-    line-height: 22px;
-    width: 22px;
-    margin-top: 7px;
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-.fa-bold {
-    background-image: url('../../../assets/image/editor/bold.svg');
-}
-
-.fa-italic {
-    background-image: url('../../../assets/image/editor/italic.svg');
-}
-
-.fa-link {
-    background-image: url('../../../assets/image/editor/link.svg');
-}
-
-.fa-outdent {
-    background-image: url('../../../assets/image/editor/quote.svg');
-}
-
-.fa-code {
-    background-image: url('../../../assets/image/editor/code.svg');
-}
-
-.fa-picture-o {
-    background-image: url('../../../assets/image/editor/photo.svg');
-}
-
-.fa-list-ol {
-    background-image: url('../../../assets/image/editor/list_numbered.svg');
-}
-
-.fa-list-ul {
-    background-image: url('../../../assets/image/editor/list_bulleted.svg');
-}
-
-.fa-header {
-    background-image: url('../../../assets/image/editor/title.svg');
-}
-
-.fa-eye {
-    background-image: url('../../../assets/image/editor/eye.svg');
-}
-
-.fa-columns {
-    background-image: url('../../../assets/image/editor/sceen.svg');
-}
-
-.fa-pencil {
-    background-image: url('../../../assets/image/editor/edit.svg');
-}
-
-.fa-arrows-alt {
-    background-image: url('../../../assets/image/editor/fullscreen.svg');
 }

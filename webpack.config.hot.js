@@ -12,7 +12,8 @@ var BUILD_PATH = path.resolve(ROOT_PATH, '/build'); // 发布文件所存放的�
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
     entry: {
-        app: ['webpack-hot-middleware/client', APP_FILE]
+        app: ['webpack-hot-middleware/client', APP_FILE],
+        iconfont: 'assets/js/iconfont.js'
     },
     output: {
         publicPath: '/', // 编译好的文件，在服务器的路径,这是静态资源引用路径

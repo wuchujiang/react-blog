@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import marked from 'marked';
 import cNames from 'classnames';
+import Icon from '../icon';
 import './index.scss';
 
 export default class MdEditor extends Component {
@@ -23,17 +24,17 @@ export default class MdEditor extends Component {
     _getToolBar = () => {
         return (
             <ul className="md-toolbar clearfix">
-                <li className="tb-btn"><a title="加粗" onClick={this._boldText}><i className="fa fa-bold" /></a></li>{/* bold */}
-                <li className="tb-btn"><a title="斜体" onClick={this._italicText}><i className="fa fa-italic" /></a></li>{/* italic */}
+                <li className="tb-btn"><a title="加粗" onClick={this._boldText}><Icon type="bold" /></a></li>{/* bold */}
+                <li className="tb-btn"><a title="斜体" onClick={this._italicText}><Icon type="italic" /></a></li>{/* italic */}
                 <li className="tb-btn spliter" />
-                <li className="tb-btn"><a title="链接" onClick={this._linkText}><i className="fa fa-link" /></a></li>{/* link */}
-                <li className="tb-btn"><a title="引用" onClick={this._blockquoteText}><i className="fa fa-outdent" /></a></li>{/* blockquote */}
-                <li className="tb-btn"><a title="代码段" onClick={this._codeText}><i className="fa fa-code" /></a></li>{/* code */}
-                <li className="tb-btn"><a title="图片" onClick={this._pictureText}><i className="fa fa-picture-o" /></a></li>{/* picture-o */}
+                <li className="tb-btn"><a title="链接" onClick={this._linkText}><Icon type="link" /></a></li>{/* link */}
+                <li className="tb-btn"><a title="引用" onClick={this._blockquoteText}><Icon type="quote" /></a></li>{/* blockquote */}
+                <li className="tb-btn"><a title="代码段" onClick={this._codeText}><Icon type="code" /></a></li>{/* code */}
+                <li className="tb-btn"><a title="图片" onClick={this._pictureText}><Icon type="photo" /></a></li>{/* picture-o */}
                 <li className="tb-btn spliter" />
-                <li className="tb-btn"><a title="有序列表" onClick={this._listOlText}><i className="fa fa-list-ol" /></a></li>{/* list-ol */}
-                <li className="tb-btn"><a title="无序列表" onClick={this._listUlText}><i className="fa fa-list-ul" /></a></li>{/* list-ul */}
-                <li className="tb-btn"><a title="标题" onClick={this._headerText}><i className="fa fa-header" /></a></li>{/* header */}
+                <li className="tb-btn"><a title="有序列表" onClick={this._listOlText}><Icon type="list_bulleted" /></a></li>{/* list-ol */}
+                <li className="tb-btn"><a title="无序列表" onClick={this._listUlText}><Icon type="list_numbered" /></a></li>{/* list-ul */}
+                <li className="tb-btn"><a title="标题" onClick={this._headerText}><Icon type="title" /></a></li>{/* header */}
                 {this._getExternalBtn()}
             </ul>
         );
@@ -52,21 +53,21 @@ export default class MdEditor extends Component {
             <ul className="md-modebar">
                 <li className="tb-btn pull-right">
                 <a className={checkActive('preview')} onClick={this._changeMode('preview')} title="预览模式">
-                    <i className="fa fa-eye" />
+                    <Icon type="eye" />
                 </a>
                 </li> { /* preview mode */ }
                 <li className="tb-btn pull-right">
                 <a className={checkActive('split')} onClick={this._changeMode('split')} title="分屏模式">
-                    <i className="fa fa-columns" />
+                    <Icon type="sceen" />
                 </a>
                 </li> { /* split mode */ }
                 <li className="tb-btn pull-right">
                 <a className={checkActive('edit')} onClick={this._changeMode('edit')} title="编辑模式">
-                    <i className="fa fa-pencil" />
+                    <Icon type="edit" />
                 </a>
                 </li> { /* edit mode */ }
                 <li className="tb-btn spliter pull-right" />
-                <li className="tb-btn pull-right"><a title="全屏模式" onClick={this._toggleFullScreen}><i className="fa fa-arrows-alt" /></a></li> {/* full-screen */}
+                <li className="tb-btn pull-right"><a title="全屏模式" onClick={this._toggleFullScreen}><Icon type="fullscreen" /></a></li> {/* full-screen */}
             </ul>
         );
     };

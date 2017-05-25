@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as HomeActions from 'src/redux/action/home';
-import { Header, Wrap } from 'src/component';
+import { Header, Wrap, Icon } from 'src/component';
 import fetchPosts from 'src/util/fetch';
 import Article from './Article';
 import './index.scss';
@@ -31,6 +31,7 @@ class Home extends Component {
                     </div>
                     <Article article={this.state.article} />
                 </Wrap>
+                <Icon type="bold" />
             </div>
         );
     }
