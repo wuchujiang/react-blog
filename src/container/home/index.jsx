@@ -31,7 +31,6 @@ class Home extends Component {
                     </div>
                     <Article article={this.state.article} />
                 </Wrap>
-                <Icon type="bold" />
             </div>
         );
     }

@@ -49,6 +49,12 @@
     margin-bottom: 40px;
     background: #f5f5f5;
     padding-left: 10px;
+    .icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 12px;
+        font-size: 24px;
+    }
 }
 
 .user-name,
@@ -61,11 +67,6 @@
         border: none;
         background: none;
     }
-    span {
-        background-repeat: no-repeat;
-        background-size: contain;
-        margin-right: 10px;
-    }
 }
 
 .repeat-password {
@@ -74,20 +75,6 @@
 
 .user-name {
     border-bottom: 1px solid #ddd;
-}
-
-.user-icon {
-    background-image: url(../../../assets/image/svg/user.svg);
-    width: 22px;
-    height: 22px;
-    margin-right: 10px;
-}
-
-.password-icon {
-    background-image: url(../../../assets/image/svg/password.svg);
-    width: 20px;
-    height: 20px;
-    margin-right: 12px;
 }
 
 .input-item {

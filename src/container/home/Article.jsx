@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import className from 'classnames';
+import { Icon } from 'src/component/';
 
 class Article extends Component {
 
@@ -16,6 +17,7 @@ class Article extends Component {
                                 <h2>{item.title}</h2>
                                 <p className="article-excerpt">{item.abstract}...</p>
                                 <Link className="read-more" to={`/article/${item.articleId}`}>{`${'阅读详情 >'}`}</Link>
+                                { item.recommend && <Icon type="like_fill" />}
                             </div>
                         );
                     })

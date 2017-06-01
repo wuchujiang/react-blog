@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import { Icon } from 'src/component/';
 import './index.scss';
 
 class Form extends Component {
@@ -24,7 +25,7 @@ class Form extends Component {
                 </div>
                 <div className="login-container">
                     <div className="input-item user-name">
-                        <span className="user-icon" />
+                        <Icon type="group" />
                         <input
                           placeholder="请输入用户名"
                           onChange={e => onFormChange('user', e.target.value)}
@@ -36,7 +37,7 @@ class Form extends Component {
                         {(typeof user.vaild !== 'undefined' && !user.vaild) && <div className="error-info"><span>{user.error}</span></div>}
                     </div>
                     <div className="input-item user-password">
-                        <span className="password-icon" />
+                        <Icon type="unlock" />
                         <input
                           placeholder="请输入密码"
                           onChange={e => onFormChange('password', e.target.value)}
@@ -49,7 +50,7 @@ class Form extends Component {
                     </div>
                     {
                         type === 'register' && <div className="input-item user-password repeat-password">
-                            <span className="password-icon" />
+                            <Icon type="lock" />
                             <input
                               placeholder="请再次输入密码"
                               onChange={e => onFormChange('repeatPassword', e.target.value)}

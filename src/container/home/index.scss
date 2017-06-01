@@ -12,12 +12,14 @@
     display: flex;
     flex-wrap: wrap;
     .article-item{
+        position: relative;
         width: 25%;
         background: #fff;
         margin: 10px;
         padding: 20px;
         transition: all .2s;
         cursor: pointer;
+        font-size: 14px;
         &:hover{
              box-shadow: 0 1px 2px rgba(0,0,0,0.05),0 2px 6px rgba(0,0,0,0.05),0 8px 48px rgba(0,0,0,0.1);
         }
@@ -48,5 +50,34 @@
             padding-top: 20px;
             font-size: 14px;
         }
+    }
+}
+
+.article-item.recommend{
+    position: relative;
+    background-color: #1F2026;
+    color: #fff;
+    .article-excerpt{
+        color: #aaa;
+    }
+    &:after{
+        content: '';
+        position: absolute;
+        right: 0;
+        top:0;
+        width: 0;
+        height: 0;
+        border-right: 3em solid #FFC336;
+        border-bottom: 3em solid transparent;
+    }
+    svg{
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 1.75em;
+        height: 1.75em;
+        z-index: 3;
+        color: #000;
+        font-size: 12px;
     }
 }
